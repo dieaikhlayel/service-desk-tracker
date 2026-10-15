@@ -56,7 +56,7 @@ This project was developed and run against MySQL 26.7 on Windows. Other MySQL ve
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/service-desk-tracker.git
+git clone https://github.com/dieaikhlayel/service-desk-tracker.git
 cd service-desk-tracker
 ```
 
@@ -85,8 +85,8 @@ The database password is **not** stored in the project. The backend reads it fro
 
 ```powershell
 cd service-desk-backend
-$env:DB_USERNAME = "root"
-$env:DB_PASSWORD = "your_mysql_password"
+$env:DB_USERNAME = "Diea"
+$env:DB_PASSWORD = "root"
 .\mvnw.cmd spring-boot:run
 ```
 
@@ -94,8 +94,8 @@ $env:DB_PASSWORD = "your_mysql_password"
 
 ```bash
 cd service-desk-backend
-export DB_USERNAME=root
-export DB_PASSWORD=your_mysql_password
+export DB_USERNAME=Diea
+export DB_PASSWORD=root
 ./mvnw spring-boot:run
 ```
 
