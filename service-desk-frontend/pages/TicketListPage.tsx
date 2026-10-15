@@ -5,13 +5,53 @@ import DashboardSummary from '../components/DashboardSummary'
 import ErrorMessage from '../components/ErrorMessage'
 import LoadingMessage from '../components/LoadingMessage'
 import TicketFilters from '../components/TicketFilters'
-import TicketTable from '../components/TicketTable'
 import {
     EMPTY_FILTERS,
     type Ticket,
     type TicketFilters as TicketFilterValues,
     type TicketSummary,
 } from '../types/ticket'
+
+function TicketTable({
+    tickets,
+    hasActiveFilters,
+    onDelete,
+}: {
+    tickets: Ticket[]
+    hasActiveFilters: boolean
+    onDelete: (ticket: Ticket) => void
+}) {
+    if (tickets.length === 0) {
+        return <p>{hasActiveFilters ? 'No tickets match your filters.' : 'No tickets yet.'}</p>
+    }
+
+    return (
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {tickets.map((ticket) => (
+                    <tr key={ticket.id}>
+                        <td>{ticket.title}</td>
+                        <td>{ticket.status}</td>
+                        <td>{ticket.priority}</td>
+                        <td>
+                            <button type="button" onClick={() => onDelete(ticket)}>
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    )
+}
 
 function getErrorMessage(error: unknown): string {
     return error instanceof ApiError ? error.message : 'Something went wrong. Please try again.'
